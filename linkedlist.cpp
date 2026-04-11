@@ -54,6 +54,33 @@ public:
             }
         }
     }
+
+    void deleteFront(){
+        if(head == NULL){
+            cout << "Linked List is empty\n";
+            return;
+        }else{
+            Node* temp = head;
+            head = head->next;
+            temp->next = NULL;
+            delete temp;
+        }
+    };
+    void deleteBack(){
+
+        if(head == NULL){
+            cout << "Linked List is empty\n";
+            return;
+        }
+        Node* temp = head;
+        while(temp->next != tail){
+            temp = temp->next;
+        }   
+        temp->next = NULL;
+        delete tail;
+        tail = temp;
+        
+    };
 };
 
 int main(){
@@ -63,6 +90,10 @@ int main(){
     ll.pushFront(2);
     ll.pushFront(3);
     ll.pushBack(4);
+    ll.deleteFront();
+    ll.print();
+    ll.deleteBack();
+    cout << endl;
     ll.print();
     return 0;
 };
