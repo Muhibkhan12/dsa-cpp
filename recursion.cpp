@@ -1,70 +1,81 @@
 #include <iostream>
 using namespace std;
 
-
-class Node{
+class Node {
 public:
     int data;
     Node* next;
 
-    Node(int val){
+    Node(int val) {
         data = val;
         next = NULL;
     }
 };
 
-class LinkedList{
+class LinkedList {
     Node* head;
     Node* tail;
+
 public:
-    LinkedList(){
+    LinkedList() {
         head = tail = NULL;
     }
 
-    Node *getHead(){
+    Node* getHead() {
         return head;
     }
 
-    void *addFront(int val){
+    void addFront(int val) {
         Node* newNode = new Node(val);
-        if(head = NULL){
+
+        if (head == NULL) {
             head = tail = newNode;
-            return;
-        }else{
-            newNode->next = newNode;
+        } else {
+            newNode->next = head;  // FIXED
             head = newNode;
         }
     }
 
-    void *addBack(int val){
+    void addBack(int val) {
         Node* newNode = new Node(val);
-        if(head = NULL){
+
+        if (head == NULL) {
             head = tail = newNode;
-        }else{
+        } else {
             tail->next = newNode;
             tail = newNode;
         }
     }
 
-    void printUsingRecur(Node* temp){
-        if(temp == NULL){
+    // Recursive function (actual logic)
+    void printUsingRecur(Node* temp) {
+        if (temp == NULL) {
             return;
         }
-        cout << temp->data;
 
+        cout << temp->data << " -> ";
         printUsingRecur(temp->next);
     }
 
-
-
+    // Wrapper function (this is what YOU call)
+    void printUsingRecur() {
+        if (head == NULL) {
+            cout << "List is empty" << endl;
+            return;
+        }
+        printUsingRecur(head);
+        cout << "NULL" << endl;
+    }
 };
 
-
-int main(){
-
+int main() {
     LinkedList ll;
+
     ll.addFront(1);
     ll.addFront(2);
     ll.addFront(3);
+
     ll.printUsingRecur();
+
+    return 0;
 }
