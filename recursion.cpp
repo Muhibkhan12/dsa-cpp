@@ -31,7 +31,7 @@ public:
         if (head == NULL) {
             head = tail = newNode;
         } else {
-            newNode->next = head;  // FIXED
+            newNode->next = head;
             head = newNode;
         }
     }
@@ -47,24 +47,15 @@ public:
         }
     }
 
-    // Recursive function (actual logic)
+    // ✅ single recursive function
     void printUsingRecur(Node* temp) {
         if (temp == NULL) {
+            cout << "NULL";
             return;
         }
 
         cout << temp->data << " -> ";
         printUsingRecur(temp->next);
-    }
-
-    // Wrapper function (this is what YOU call)
-    void printUsingRecur() {
-        if (head == NULL) {
-            cout << "List is empty" << endl;
-            return;
-        }
-        printUsingRecur(head);
-        cout << "NULL" << endl;
     }
 };
 
@@ -75,7 +66,7 @@ int main() {
     ll.addFront(2);
     ll.addFront(3);
 
-    ll.printUsingRecur();
+    ll.printUsingRecur(ll.getHead());  // ✅ pass head
 
     return 0;
 }
