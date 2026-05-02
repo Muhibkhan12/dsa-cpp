@@ -25,9 +25,46 @@ public:
         return head;
     }
 
+    void *addFront(int val){
+        Node* newNode = new Node(val);
+        if(head = NULL){
+            head = tail = newNode;
+            return;
+        }else{
+            newNode->next = newNode;
+            head = newNode;
+        }
+    }
+
+    void *addBack(int val){
+        Node* newNode = new Node(val);
+        if(head = NULL){
+            head = tail = newNode;
+        }else{
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
+
+    void printUsingRecur(Node* temp){
+        if(temp == NULL){
+            return;
+        }
+        cout << temp->data;
+
+        printUsingRecur(temp->next);
+    }
+
+
+
 };
 
 
 int main(){
 
+    LinkedList ll;
+    ll.addFront(1);
+    ll.addFront(2);
+    ll.addFront(3);
+    ll.printUsingRecur();
 }
