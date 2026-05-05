@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// int arr[11] = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
-// static int idx = -1;
 
 class Node{
     public:
@@ -16,6 +14,23 @@ class Node{
             right = NULL;
         }
 
+
+        Node* insert(Node* root, int val){
+            if(root == NULL){
+                Node* root = new Node(val);
+                return;
+            }
+            if(root->data < val){
+                root->left = insert(root->left,val);
+            }else{
+                root->right = insert(root->right,val);
+            }
+            return root;
+        }
+
+        // Node*  
+
+        
         void inOrder(Node* root){
             if(root == NULL){
                 cout << "Tree is empty";
@@ -53,6 +68,7 @@ class Node{
 int main(){
 
 
+    
 
     return 0;
 }
